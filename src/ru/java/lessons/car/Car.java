@@ -1,13 +1,15 @@
 package ru.java.lessons.car;
 
-import ru.java.lessons.fuel.Fuel;
-
 public class Car {
-    private Fuel fuel;
-    public void ride(){}
-    public void recharge(){}
+    private Tank tank;
 
-    public Car(Fuel fuel) {
-        this.fuel = fuel;
+    public void ride(){}
+    public void recharge(int value){
+        System.out.println(tank.getAmount());
+        tank.addFuel(value);
+    }
+
+    public Car(Tank tank) {
+        this.tank = tank;
     }
 }

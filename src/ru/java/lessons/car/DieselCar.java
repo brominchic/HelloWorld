@@ -4,8 +4,8 @@ import ru.java.lessons.fuel.Diesel;
 import ru.java.lessons.fuel.Fuel;
 
 public class DieselCar extends Car {
-    public DieselCar(Diesel fuel){
-        super(fuel);
+    public DieselCar(Tank gasTank){
+        super(gasTank);
     }
 
 
