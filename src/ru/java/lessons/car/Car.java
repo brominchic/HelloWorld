@@ -1,13 +1,13 @@
 package ru.java.lessons.car;
 
-public class Car {
-    private Tank tank;
+import ru.java.lessons.fuel.Diesel;
+import ru.java.lessons.fuel.Fuel;
 
-    public void ride(){}
-    public void recharge(int value){
-        System.out.println(tank.getAmount());
-        tank.addFuel(value);
-    }
+public abstract class Car {
+    protected Tank tank;
+
+    public abstract void ride();
+    public abstract void recharge(int value,Fuel fuel);
 
     public Car(Tank tank) {
         this.tank = tank;
