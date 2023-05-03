@@ -12,8 +12,8 @@ public class GasCar extends Car {
     }
 
     @Override
-    public void recharge(int value, String fuel) {
-        if(fuel == Fuel.Gas.getTitle()){
+    public void recharge(int value, Fuel fuel) {
+        if(fuel == Fuel.Gas){
             tank.addFuel(value);
         }
         else{

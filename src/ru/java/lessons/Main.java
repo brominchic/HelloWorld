@@ -1,6 +1,7 @@
 package ru.java.lessons;
 
 import ru.java.lessons.car.DieselCar;
+import ru.java.lessons.car.Fuel;
 import ru.java.lessons.car.Tank;
 
 
@@ -11,6 +12,6 @@ public class Main {
         var car = new DieselCar(new Tank(100));
         System.out.println("1");
 
-        car.recharge(10,"Diesel");
+        car.recharge(10, Fuel.Diesel);
     }
 }
