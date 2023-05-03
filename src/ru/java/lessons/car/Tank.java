@@ -1,6 +1,6 @@
 package ru.java.lessons.car;
 
-import ru.java.lessons.fuel.Fuel;
+
 
 public class Tank {
 

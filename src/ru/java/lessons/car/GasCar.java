@@ -1,7 +1,6 @@
 package ru.java.lessons.car;
 
-import ru.java.lessons.fuel.Fuel;
-import ru.java.lessons.fuel.Gas;
+
 
 public class GasCar extends Car {
     public GasCar(Tank gasTank) {
@@ -13,10 +12,8 @@ public class GasCar extends Car {
     }
 
     @Override
-    public void recharge(int value, Fuel fuel) {
-
-
-        if(fuel instanceof Gas){
+    public void recharge(int value, String fuel) {
+        if(fuel == Fuel.Gas.getTitle()){
             tank.addFuel(value);
         }
         else{
