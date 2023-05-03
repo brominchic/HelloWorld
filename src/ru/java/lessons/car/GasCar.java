@@ -1,9 +1,23 @@
 package ru.java.lessons.car;
 
-import ru.java.lessons.fuel.Gas;
+
 
 public class GasCar extends Car {
-public GasCar(Gas fuel){
-    super(fuel);
-}
+    public GasCar(Tank gasTank) {
+        super(gasTank);
+    }
+
+    @Override
+    public void ride() {
+    }
+
+    @Override
+    public void recharge(int value, String fuel) {
+        if(fuel == Fuel.Gas.getTitle()){
+            tank.addFuel(value);
+        }
+        else{
+            throw new RuntimeException("Неправильный тип топлива");
+        }
+    }
 }
