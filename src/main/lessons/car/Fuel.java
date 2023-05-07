@@ -4,7 +4,7 @@ public enum Fuel{
 
   Diesel ("Diesel"),
   Gas ("Gas"),
-  test (null);
+
   private String title;
 
 
