@@ -1,8 +1,7 @@
-package ru.java.lessons;
+package lessons;
 
-import ru.java.lessons.car.DieselCar;
-import ru.java.lessons.car.Fuel;
-import ru.java.lessons.car.Tank;
+import lessons.car.Tank;
+import lessons.car.DieselCar;
 
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -12,6 +11,6 @@ public class Main {
         var car = new DieselCar(new Tank(100));
         System.out.println("1");
 
-        car.recharge(10, Fuel.Diesel);
+        car.recharge(100, null);
     }
 }

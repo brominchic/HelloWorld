@@ -1,10 +1,12 @@
-package ru.java.lessons.car;
+package lessons.car;
 
 public enum Fuel{
 
   Diesel ("Diesel"),
-  Gas ("Gas");
+  Gas ("Gas"),
+  test (null);
   private String title;
+
 
   Fuel(String title) {
     this.title = title;

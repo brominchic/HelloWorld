@@ -1,4 +1,4 @@
-package ru.java.lessons.car;
+package lessons.car;
 
 
 
@@ -14,7 +14,7 @@ public class DieselCar extends Car {
 
     @Override
     public void recharge(int value, Fuel fuel) {
-        if(fuel == Fuel.Diesel){
+        if(Fuel.Diesel.equals(fuel) ){
             tank.addFuel(value);
         }
         else{
