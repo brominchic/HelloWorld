@@ -10,6 +10,6 @@ class DieselCarTest {
     @Test
     void name() {
        var dcar=  new DieselCar(new Tank(100));
-       dcar.recharge(10,null);
+       dcar.recharge(10,Fuel.Diesel);
     }
 }

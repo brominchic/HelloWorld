@@ -3,7 +3,7 @@ package lessons.car;
 public enum Fuel{
 
   Diesel ("Diesel"),
-  Gas ("Gas"),
+  Gas ("Gas");
 
   private String title;
 
