@@ -1,23 +1,25 @@
-package ru.java.lessons.car;
+package lessons.car;
 
 
 
-public class GasCar extends Car {
-    public GasCar(Tank gasTank) {
+public class DieselCar extends Car {
+    public DieselCar(Tank gasTank) {
         super(gasTank);
     }
 
     @Override
     public void ride() {
+
     }
 
     @Override
-    public void recharge(int value, String fuel) {
-        if(fuel == Fuel.Gas.getTitle()){
+    public void recharge(int value, Fuel fuel) {
+        if(Fuel.Diesel.equals(fuel) ){
             tank.addFuel(value);
         }
         else{
             throw new RuntimeException("Неправильный тип топлива");
         }
+
     }
 }

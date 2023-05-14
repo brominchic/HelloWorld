@@ -1,4 +1,4 @@
-package ru.java.lessons.car;
+package lessons.car;
 
 
 
