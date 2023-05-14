@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class KPP {
-    private static Queue<Car> cars;
+    private final Queue<Car> cars;
     public KPP() {
         this.cars = new LinkedList<>();
     }

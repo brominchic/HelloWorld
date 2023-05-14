@@ -15,15 +15,15 @@ public class AddCarTest {
         var fourthCar = new DieselCar(new Tank(100));
         var fifthCar = new DieselCar(new Tank(100));
         var sixthCar = new DieselCar(new Tank(100));
-        var TestKPP = new KPP();
-        TestKPP.addCar(firstCar);
-        TestKPP.addCar(secondCar);
-        TestKPP.addCar(thirdCar);
-        var firstTest = TestKPP.addCar(fourthCar);
+        var testKPP = new KPP();
+        testKPP.addCar(firstCar);
+        testKPP.addCar(secondCar);
+        testKPP.addCar(thirdCar);
+        var firstTest = testKPP.addCar(fourthCar);
         assertEquals(firstCar,firstTest);
 
-        TestKPP.addCar(fifthCar);
-        var secondTest = TestKPP.addCar(sixthCar);
+        testKPP.addCar(fifthCar);
+        var secondTest = testKPP.addCar(sixthCar);
         assertEquals(thirdCar,secondTest,"неверно");
 
 }
