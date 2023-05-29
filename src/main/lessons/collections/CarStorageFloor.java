@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Один уровень хранилища машин
  */
-public interface CarStorageFloor extends Map<String, Car> {
+public interface CarStorageFloor extends Map<String, Car>  {
 
     /**
      * Возвратит максимальное количество парковочных мест

@@ -7,10 +7,10 @@ import java.util.Collection;
 /**
  * Хранилище автомобилей
  */
-public interface CarStorage extends Collection<CarStorageFloor> {
+public interface CarStorage extends Collection<CarStorageFloorImpl> {
 
     /**
-     * Возвращает количество автомобилей
+     * Возвращает количество этажей
      */
     int getHeight();
 
@@ -27,5 +27,6 @@ public interface CarStorage extends Collection<CarStorageFloor> {
     /**
      * Запарковать машину на определенное парковочное место
      */
-    void parkCarToStorage(Car car, String parkingLotNumber);
+    boolean parkCarToStorage(Car car, String parkingLotNumber);
+
 }

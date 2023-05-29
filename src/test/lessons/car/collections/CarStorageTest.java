@@ -3,9 +3,7 @@ package lessons.car.collections;
 import lessons.car.Car;
 import lessons.car.DieselCar;
 import lessons.car.Tank;
-import lessons.collections.CarStorage;
-import lessons.collections.CarStorageFactory;
-import lessons.collections.CarStorageFloor;
+import lessons.collections.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -19,10 +17,11 @@ public class CarStorageTest {
     private CarStorageFactory carStorageFactory;
 
 //    раскомментируй и создай carStorage
-//public CarStorageTest() {
-//    this.carStorage
-//    this.carStorageFactory
-//}
+public CarStorageTest() {
+    this.carStorageFactory = new CarStorageFactoryImpl();
+    this.carStorage =  carStorageFactory.createCarStorage(10,10);
+
+}
 
     @Test
     void testCarStorageImpl() {
@@ -39,7 +38,7 @@ public class CarStorageTest {
                 var parkingLot = carStorageFloor.getAvailableParkingLot();
                 assertNotNull(parkingLot);
                 // паркуем машину
-                carStorage.parkCarToStorage(car, parkingLot);
+                storage.parkCarToStorage(car, parkingLot);
                 //запоминаем что запарковали машину сюда
                 resultChecker.put(parkingLot, car);
             }
@@ -49,12 +48,12 @@ public class CarStorageTest {
         // получаем машины с парковки, проверяем что каждая машина припаркована именно на то место где мы ее оставили
         for (Map.Entry<String, Car> parkedCar : resultChecker.entrySet()) {
             String parkingLotNumber = parkedCar.getKey();
-            var unParkedCar = carStorage.getCarFromStorage(parkingLotNumber);
+            var unParkedCar = storage.getCarFromStorage(parkingLotNumber);
             assertEquals(resultChecker.get(parkingLotNumber), unParkedCar);
         }
 
         // проверяем что все места свободны и количество парковочных мест не изменилось
-        for (CarStorageFloor carStorageFloor : carStorage) {
+        for (CarStorageFloor carStorageFloor : storage) {
             assertEquals(10, carStorageFloor.size());
             for (Car value : carStorageFloor.values()) {
                 assertNull(value);
