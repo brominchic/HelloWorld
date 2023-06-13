@@ -12,7 +12,6 @@ public interface CarStorageFactory {
      * @param height               количество этажей
      * @param amountOfCarsPerFloor количество машин на каждом этаже
      */
-    CarStorage createCarStorage(int height, int amountOfCarsPerFloor)
-
-    ;
+    CarStorage createCarStorage(int height, int amountOfCarsPerFloor);
 }
+

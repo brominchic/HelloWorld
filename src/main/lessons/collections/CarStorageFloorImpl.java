@@ -10,11 +10,9 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
 
     public CarStorageFloorImpl(int size, int num) {
         super(size);
-        int firstNum=(size * num);
-        int lastNum=(size * (num + 1);
-        for (int i = firstNum; i < lastNum; i++) {
-
-            put(String.valueOf(i), null);
+        for (int i = 0; i < size; i++) {
+            String place = num + "-" + i;
+            put(place, null);
         }
 
     }
