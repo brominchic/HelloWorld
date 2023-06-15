@@ -48,7 +48,7 @@ public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements C
 
     @Override
     public void parkCarToStorage(Car car, String parkingLotNumber) {
-        getFloorByNum(parkingLotNumber).park(car, parkingLotNumber);
+        getFloorByNum(parkingLotNumber).park( parkingLotNumber,car);
 
     }
 

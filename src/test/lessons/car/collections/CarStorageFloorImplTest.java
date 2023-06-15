@@ -20,7 +20,7 @@ public class CarStorageFloorImplTest {
 
         }
         for (int i = 0; i < 10; i++) {
-            floor.put(floor.getAvailableParkingLot(), new DieselCar(new Tank(100)));
+            floor.park(floor.getAvailableParkingLot(), new DieselCar(new Tank(100)));
 
         }
         for (Map.Entry<String, Car> stringCarEntry : floor.entrySet()) {
