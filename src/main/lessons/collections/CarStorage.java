@@ -19,6 +19,7 @@ public interface CarStorage extends Collection<CarStorageFloorImpl> {
      */
     int getAmountPerFloor();
 
+
     /**
      * Получить машину из хранилища по номеру парковочного места
      */
@@ -27,6 +28,7 @@ public interface CarStorage extends Collection<CarStorageFloorImpl> {
     /**
      * Запарковать машину на определенное парковочное место
      */
-    boolean parkCarToStorage(Car car, String parkingLotNumber);
+    void parkCarToStorage(Car car, String parkingLotNumber);
+
 
 }

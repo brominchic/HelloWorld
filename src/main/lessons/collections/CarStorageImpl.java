@@ -3,6 +3,7 @@ package lessons.collections;
 import lessons.car.Car;
 
 
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements CarStorage {
@@ -10,12 +11,16 @@ public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements C
     int amountPerFloor;
     int height;
 
+
+
     public CarStorageImpl(int amountPerFloor, int height) {
         this.amountPerFloor = amountPerFloor;
         this.height = height - 1;
         for (int i = 0; i < height; i++) {
             add(i, new CarStorageFloorImpl(amountPerFloor, i));
         }
+
+
     }
 
     @Override
@@ -42,11 +47,14 @@ public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements C
 
 
     @Override
-    public boolean parkCarToStorage(Car car, String parkingLotNumber) {
-        int num = parkingLotNumber.indexOf("-");
-        int sym = Integer.parseInt(parkingLotNumber.substring(0, num));
-        var floor = get(sym);
-        return floor.park(car, parkingLotNumber);
+    public void parkCarToStorage(Car car, String parkingLotNumber) {
+        getFloorByNum(parkingLotNumber).park(car, parkingLotNumber);
+
+    }
+
+    private CarStorageFloorImpl getFloorByNum(String parkingLotNumber) {
+        int NumOfFloor = Integer.parseInt(parkingLotNumber.substring(0, parkingLotNumber.indexOf("-")));
+        return get(NumOfFloor);
     }
 }
 
