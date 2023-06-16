@@ -12,7 +12,6 @@ public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements C
     int height;
 
 
-
     public CarStorageImpl(int amountPerFloor, int height) {
         this.amountPerFloor = amountPerFloor;
         this.height = height - 1;
@@ -48,7 +47,7 @@ public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements C
 
     @Override
     public void parkCarToStorage(Car car, String parkingLotNumber) {
-        getFloorByNum(parkingLotNumber).park( parkingLotNumber,car);
+        getFloorByNum(parkingLotNumber).park(parkingLotNumber, car);
 
     }
 

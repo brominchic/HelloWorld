@@ -7,19 +7,20 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStorageFloor {
-    public int num;
+    public int numberOfFloor;
     public int size;
     public HashSet<String> parkingLots;
 
-    public CarStorageFloorImpl(int size, int num) {
+    public CarStorageFloorImpl(int size, int numberOfFloor) {
         super(size);
+        this.numberOfFloor = numberOfFloor;
         for (int i = 0; i < size; i++) {
-            String place = num + "-" + i;
+            String place = numberOfFloor + "-" + i;
             put(place, null);
         }
-        this.parkingLots= new HashSet<>();
+        this.parkingLots = new HashSet<>();
         for (int i = 0; i < size; i++) {
-            String place = num + "-" + i;
+            String place = numberOfFloor + "-" + i;
             parkingLots.add(place);
         }
     }
@@ -32,9 +33,9 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
     @Override
     public String getAvailableParkingLot() {
         for (int i = 0; i < size(); i++) {
-            if (parkingLots.contains(num + "-" + i)) {
+            if (parkingLots.contains(numberOfFloor + "-" + i)) {
 
-                return (num + "-" + i);
+                return (numberOfFloor + "-" + i);
             }
 
 
@@ -43,7 +44,7 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
     }
 
 
-    public boolean park( String place ,Car car) {
+    public boolean park(String place, Car car) {
 
         if (parkingLots.contains(place)) {
             parkingLots.remove(place);
@@ -54,9 +55,10 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
     }
 
     public Car getCar(String place) {
-        var a = get(place);
+        var car = get(place);
+        put(place, null);
         parkingLots.add(place);
-        return a;
+        return car;
     }
 
     public HashSet<String> getParkingLots() {
