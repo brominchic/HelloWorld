@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarStorageFloorImplTest {
     @Test
     void carStorageFloorImplTest() {
-        CarStorageFloorImpl floor = new CarStorageFloorImpl(10,0);
-        assertEquals(10, floor.size());
+        CarStorageFloorImpl floor = new CarStorageFloorImpl(10, 0);
+        assertEquals(10, floor.getParkingLotsSize());
         for (Map.Entry<String, Car> stringCarEntry : floor.entrySet()) {
             assertNull(stringCarEntry.getValue());
 
@@ -28,5 +28,16 @@ public class CarStorageFloorImplTest {
 
         }
         assertNull(floor.getAvailableParkingLot());
+    }
+
+    @Test
+    void carStorageFloorParkTest() {
+        CarStorageFloorImpl floor = new CarStorageFloorImpl(10, 0);
+        try {
+            floor.park("0-10", new DieselCar(new Tank(100)));
+
+        } catch (RuntimeException thrown) {
+            assertEquals("Нет такого места", thrown.getMessage());
+        }
     }
 }

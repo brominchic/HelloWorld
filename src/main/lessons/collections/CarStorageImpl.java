@@ -3,18 +3,18 @@ package lessons.collections;
 import lessons.car.Car;
 
 
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements CarStorage {
 
-    int amountPerFloor;
-    int height;
+public class CarStorageImpl extends ArrayList<CarStorageFloorImpl> implements CarStorage {
+
+    private int amountPerFloor;
+    private int height;
 
 
     public CarStorageImpl(int amountPerFloor, int height) {
         this.amountPerFloor = amountPerFloor;
-        this.height = height - 1;
+        this.height = height ;
         for (int i = 0; i < height; i++) {
             add(i, new CarStorageFloorImpl(amountPerFloor, i));
         }
@@ -37,9 +37,7 @@ public class CarStorageImpl extends LinkedList<CarStorageFloorImpl> implements C
 
     @Override
     public Car getCarFromStorage(String placeNumber) {
-        int num = placeNumber.indexOf("-");
-        int sym = Integer.parseInt(placeNumber.substring(0, num));
-        var floor = get(sym);
+        var floor = getFloorByNum(placeNumber);
         return floor.getCar(placeNumber);
 
     }

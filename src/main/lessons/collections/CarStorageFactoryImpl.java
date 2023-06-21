@@ -5,7 +5,5 @@ public class CarStorageFactoryImpl implements CarStorageFactory {
     public CarStorage createCarStorage(int height, int amountOfCarsPerFloor) {
         return new CarStorageImpl(amountOfCarsPerFloor, height);
     }
-
-
 }
 

@@ -1,7 +1,6 @@
 package lessons.car;
 
 
-
 public class GasCar extends Car {
     public GasCar(Tank gasTank) {
         super(gasTank);
@@ -13,10 +12,9 @@ public class GasCar extends Car {
 
     @Override
     public void recharge(int value, Fuel fuel) {
-        if(fuel == Fuel.Gas){
+        if (fuel == Fuel.Gas) {
             tank.addFuel(value);
-        }
-        else{
+        } else {
             throw new RuntimeException("Неправильный тип топлива");
         }
 

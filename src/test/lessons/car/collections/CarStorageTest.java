@@ -16,12 +16,12 @@ public class CarStorageTest {
     private CarStorage carStorage;
     private CarStorageFactory carStorageFactory;
 
-//    раскомментируй и создай carStorage
-public CarStorageTest() {
-    this.carStorageFactory = new CarStorageFactoryImpl();
-    this.carStorage =  carStorageFactory.createCarStorage(10,10);
+    //    раскомментируй и создай carStorage
+    public CarStorageTest() {
+        this.carStorageFactory = new CarStorageFactoryImpl();
+        this.carStorage = carStorageFactory.createCarStorage(10, 10);
 
-}
+    }
 
     @Test
     void testCarStorageImpl() {
@@ -54,7 +54,7 @@ public CarStorageTest() {
 
         // проверяем что все места свободны и количество парковочных мест не изменилось
         for (CarStorageFloor carStorageFloor : storage) {
-            assertEquals(10, carStorageFloor.size());
+            assertEquals(10, carStorageFloor.getParkingLotsSize());
             for (Car value : carStorageFloor.values()) {
                 assertNull(value);
             }

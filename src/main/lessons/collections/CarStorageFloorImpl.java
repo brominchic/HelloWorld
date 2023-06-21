@@ -9,15 +9,12 @@ import java.util.LinkedList;
 public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStorageFloor {
     public int numberOfFloor;
     public int size;
-    public HashSet<String> parkingLots;
+    private HashSet<String> parkingLots;
 
     public CarStorageFloorImpl(int size, int numberOfFloor) {
         super(size);
+        this.size = size;
         this.numberOfFloor = numberOfFloor;
-        for (int i = 0; i < size; i++) {
-            String place = numberOfFloor + "-" + i;
-            put(place, null);
-        }
         this.parkingLots = new HashSet<>();
         for (int i = 0; i < size; i++) {
             String place = numberOfFloor + "-" + i;
@@ -27,12 +24,13 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
 
     @Override
     public int getParkingLotsSize() {
-        return size();
+        return size;
     }
 
     @Override
     public String getAvailableParkingLot() {
-        for (int i = 0; i < size(); i++) {
+        for (int i = 0; i < size; i++) {
+            String numberOfPlace = (numberOfFloor + "-" + i);
             if (parkingLots.contains(numberOfFloor + "-" + i)) {
 
                 return (numberOfFloor + "-" + i);
@@ -44,6 +42,7 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
     }
 
 
+    @Override
     public boolean park(String place, Car car) {
 
         if (parkingLots.contains(place)) {
@@ -51,19 +50,17 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
             put(place, car);
             return true;
         }
-        return false;
+        throw new RuntimeException("Нет такого места");
     }
 
+    @Override
     public Car getCar(String place) {
         var car = get(place);
-        put(place, null);
+        remove(place);
         parkingLots.add(place);
         return car;
     }
 
-    public HashSet<String> getParkingLots() {
-        return parkingLots;
-    }
 }
 
 
