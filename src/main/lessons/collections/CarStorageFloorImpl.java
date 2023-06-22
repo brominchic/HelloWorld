@@ -4,7 +4,7 @@ import lessons.car.Car;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
+
 
 public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStorageFloor {
     public int numberOfFloor;
@@ -17,8 +17,7 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
         this.numberOfFloor = numberOfFloor;
         this.parkingLots = new HashSet<>();
         for (int i = 0; i < size; i++) {
-            String place = numberOfFloor + "-" + i;
-            parkingLots.add(place);
+            parkingLots.add(GetNumOfPlace(i));
         }
     }
 
@@ -30,10 +29,10 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
     @Override
     public String getAvailableParkingLot() {
         for (int i = 0; i < size; i++) {
-            String numberOfPlace = (numberOfFloor + "-" + i);
-            if (parkingLots.contains(numberOfFloor + "-" + i)) {
+            String numberOfPlace = GetNumOfPlace(i);
+            if (parkingLots.contains(numberOfPlace)) {
 
-                return (numberOfFloor + "-" + i);
+                return (numberOfPlace);
             }
 
 
@@ -59,6 +58,11 @@ public class CarStorageFloorImpl extends HashMap<String, Car> implements CarStor
         remove(place);
         parkingLots.add(place);
         return car;
+    }
+
+    @Override
+    public String GetNumOfPlace(int NumOfPlace) {
+        return (numberOfFloor + "-" + NumOfPlace);
     }
 
 }
