@@ -1,7 +1,6 @@
 package lessons.car;
 
 
-
 public abstract class Car {
     protected Tank tank;
 
