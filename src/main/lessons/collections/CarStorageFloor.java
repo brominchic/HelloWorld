@@ -29,9 +29,6 @@ public interface CarStorageFloor extends Map<String, Car> {
      */
     boolean park(String place, Car car);
 
-    /**
-     * Возвращает номер парковочного места
-     */
-    String GetNumOfPlace(int Number);
+
 
 }
