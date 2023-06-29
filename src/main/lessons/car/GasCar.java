@@ -4,6 +4,7 @@ package lessons.car;
 public class GasCar extends Car {
     public GasCar(Tank gasTank) {
         super(gasTank);
+
     }
 
     @Override
@@ -18,5 +19,14 @@ public class GasCar extends Car {
             throw new RuntimeException("Неправильный тип топлива");
         }
 
+    }
+
+    @Override
+    public void reduceFuel(int value, Fuel fuel) {
+        if (fuel == Fuel.Gas) {
+            tank.reduce(value);
+        } else {
+            throw new RuntimeException("Неправильный тип топлива");
+        }
     }
 }

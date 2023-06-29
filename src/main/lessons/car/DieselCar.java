@@ -8,7 +8,6 @@ public class DieselCar extends Car {
 
     @Override
     public void ride() {
-
     }
 
     @Override
@@ -19,5 +18,14 @@ public class DieselCar extends Car {
             throw new RuntimeException("Неправильный тип топлива");
         }
 
+    }
+
+    @Override
+    public void reduceFuel(int value, Fuel fuel) {
+        if (fuel == Fuel.Diesel) {
+            tank.reduce(value);
+        } else {
+            throw new RuntimeException("Неправильный тип топлива");
+        }
     }
 }
