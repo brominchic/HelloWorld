@@ -6,9 +6,6 @@ public class DieselCar extends Car {
         super(gasTank);
     }
 
-    @Override
-    public void ride() {
-    }
 
     @Override
     public void recharge(int value, Fuel fuel) {
@@ -21,11 +18,13 @@ public class DieselCar extends Car {
     }
 
     @Override
-    public void reduceFuel(int value, Fuel fuel) {
-        if (fuel == Fuel.Diesel) {
-            tank.reduce(value);
-        } else {
-            throw new RuntimeException("Неправильный тип топлива");
-        }
+    public void reduceFuel(int value) {
+
+        tank.reduce(value);
+
+    }
+    @Override
+    public int getAmountOfFuel () {
+        return tank.getAmount();
     }
 }

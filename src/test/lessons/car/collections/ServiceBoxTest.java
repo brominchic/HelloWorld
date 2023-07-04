@@ -1,9 +1,6 @@
 package lessons.car.collections;
 
-import lessons.car.Car;
-import lessons.car.DieselCar;
-import lessons.car.GasCar;
-import lessons.car.Tank;
+import lessons.car.*;
 import lessons.collections.ServiceBox;
 import org.junit.jupiter.api.Test;
 
@@ -11,24 +8,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ServiceBoxTest {
-
+    public int stolenGas;
+    public int stolenDiesel;
 
     @Test
     void testServiceBox() {
-        var serviceBoxForGasCar = new ServiceBox<>(10);
-        var serviceBoxForDieselCar = new ServiceBox<>(10);
+        var serviceBoxForGasCar = new ServiceBox<GasCar>(50);
+        var serviceBoxForDieselCar = new ServiceBox<DieselCar>(10);
         for (int i = 0; i < 10; i++) {
             GasCar gasCar = new GasCar(new Tank(100));
-            serviceBoxForGasCar.parkToService(Integer.toString(i), gasCar);
-            serviceBoxForGasCar.doService(Integer.toString(i));
-            assertEquals(gasCar, serviceBoxForGasCar.getCar(Integer.toString(i)));
+            gasCar.recharge(1, Fuel.Gas);
+            serviceBoxForGasCar.parkToService(gasCar);
+            serviceBoxForGasCar.doService();
+            assertEquals(gasCar, serviceBoxForGasCar.getCar());
+            stolenGas=stolenGas+1-gasCar.getAmountOfFuel();
         }
+
         for (int i = 0; i < 10; i++) {
             DieselCar dieselCar = new DieselCar(new Tank(100));
-            serviceBoxForDieselCar.parkToService(Integer.toString(i), dieselCar);
-            serviceBoxForDieselCar.doService(Integer.toString(i));
-            assertEquals(dieselCar, serviceBoxForDieselCar.getCar(Integer.toString(i)));
+            dieselCar.recharge(1,Fuel.Diesel);
+            serviceBoxForDieselCar.parkToService(dieselCar);
+            serviceBoxForDieselCar.doService();
+            assertEquals(dieselCar, serviceBoxForDieselCar.getCar());
+            stolenDiesel=stolenDiesel+1-dieselCar.getAmountOfFuel();
         }
         assertTrue(serviceBoxForGasCar.getStolenFuel() > serviceBoxForDieselCar.getStolenFuel());
+        assertEquals(serviceBoxForGasCar.getStolenFuel(),stolenGas);
+        assertEquals(serviceBoxForDieselCar.getStolenFuel(),stolenDiesel);
     }
 }
