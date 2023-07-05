@@ -1,12 +1,7 @@
 package lessons.collections;
 
 import lessons.car.Car;
-import lessons.car.DieselCar;
-import lessons.car.Fuel;
-import lessons.car.GasCar;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Random;
 
 public class ServiceBox<E extends Car> {
@@ -23,10 +18,9 @@ public class ServiceBox<E extends Car> {
 
 
     public void parkToService(E car) {
-        if (this.car==(null)) {
+        if (this.car == (null)) {
             this.car = car;
-        }
-        else throw new RuntimeException("ЗАНЯТО");
+        } else throw new RuntimeException("ЗАНЯТО");
     }
 
     public Car getCar() {
@@ -37,16 +31,20 @@ public class ServiceBox<E extends Car> {
     }
 
     public void doService() {
-      if(steal()){
-          car.reduceFuel(1);
-          stolenFuel=stolenFuel+1;
-      }
+        if (this.car != null) {
+            steal(1);
+        } else throw new RuntimeException("Нет машины");
     }
 
     public int getStolenFuel() {
         return stolenFuel;
     }
-    private boolean steal(){
-        return random.nextInt(0, 100) < stealProbability;
+
+    private void steal(int amount) {
+        if (random.nextInt(0, 100) < stealProbability) {
+            car.reduceFuel(amount);
+            stolenFuel += amount;
+        }
+
     }
 }

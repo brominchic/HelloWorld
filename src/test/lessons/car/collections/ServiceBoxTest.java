@@ -21,19 +21,24 @@ public class ServiceBoxTest {
             serviceBoxForGasCar.parkToService(gasCar);
             serviceBoxForGasCar.doService();
             assertEquals(gasCar, serviceBoxForGasCar.getCar());
-            stolenGas=stolenGas+1-gasCar.getAmountOfFuel();
+            stolenGas = stolenGas + 1 - gasCar.getAmountOfFuel();
         }
-
+        try {
+            serviceBoxForGasCar.doService();
+        } catch (RuntimeException thrown) {
+            assertEquals("Нет машины", thrown.getMessage());
+        }
         for (int i = 0; i < 10; i++) {
             DieselCar dieselCar = new DieselCar(new Tank(100));
-            dieselCar.recharge(1,Fuel.Diesel);
+            dieselCar.recharge(1, Fuel.Diesel);
             serviceBoxForDieselCar.parkToService(dieselCar);
             serviceBoxForDieselCar.doService();
             assertEquals(dieselCar, serviceBoxForDieselCar.getCar());
-            stolenDiesel=stolenDiesel+1-dieselCar.getAmountOfFuel();
+            stolenDiesel = stolenDiesel + 1 - dieselCar.getAmountOfFuel();
         }
         assertTrue(serviceBoxForGasCar.getStolenFuel() > serviceBoxForDieselCar.getStolenFuel());
-        assertEquals(serviceBoxForGasCar.getStolenFuel(),stolenGas);
-        assertEquals(serviceBoxForDieselCar.getStolenFuel(),stolenDiesel);
+        assertEquals(serviceBoxForGasCar.getStolenFuel(), stolenGas);
+        assertEquals(serviceBoxForDieselCar.getStolenFuel(), stolenDiesel);
     }
 }
+

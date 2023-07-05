@@ -17,14 +17,5 @@ public class DieselCar extends Car {
 
     }
 
-    @Override
-    public void reduceFuel(int value) {
 
-        tank.reduce(value);
-
-    }
-    @Override
-    public int getAmountOfFuel () {
-        return tank.getAmount();
-    }
 }

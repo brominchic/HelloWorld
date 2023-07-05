@@ -10,6 +10,12 @@ public abstract class Car {
 
     public abstract void recharge(int value, Fuel fuel);
 
-    public abstract void reduceFuel(int value);
-    public abstract int getAmountOfFuel();
+    public void reduceFuel(int value) {
+        tank.reduce(value);
+    }
+
+    public int getAmountOfFuel() {
+        return tank.getAmount();
+    }
+
 }
