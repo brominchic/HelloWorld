@@ -13,7 +13,7 @@ public class ServiceBoxTest {
 
     @Test
     void testServiceBox() {
-        var serviceBoxForGasCar = new ServiceBox<GasCar>(50);
+        var serviceBoxForGasCar = new ServiceBox<Car>(50);
         var serviceBoxForDieselCar = new ServiceBox<DieselCar>(10);
         for (int i = 0; i < 10; i++) {
             GasCar gasCar = new GasCar(new Tank(100));
@@ -41,4 +41,3 @@ public class ServiceBoxTest {
         assertEquals(serviceBoxForDieselCar.getStolenFuel(), stolenDiesel);
     }
 }
-

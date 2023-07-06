@@ -6,7 +6,6 @@ public class DieselCar extends Car {
         super(gasTank);
     }
 
-
     @Override
     public void recharge(int value, Fuel fuel) {
         if (Fuel.Diesel.equals(fuel)) {
@@ -14,8 +13,6 @@ public class DieselCar extends Car {
         } else {
             throw new RuntimeException("Неправильный тип топлива");
         }
-
     }
-
 
 }

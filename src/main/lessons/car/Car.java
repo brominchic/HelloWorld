@@ -1,7 +1,7 @@
 package lessons.car;
 
 
-public abstract class Car {
+public abstract class Car<T> {
     protected Tank tank;
 
     public Car(Tank tank) {
@@ -13,7 +13,7 @@ public abstract class Car {
     public void reduceFuel(int value) {
         tank.reduce(value);
     }
-
+    
     public int getAmountOfFuel() {
         return tank.getAmount();
     }

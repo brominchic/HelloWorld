@@ -20,7 +20,7 @@ public class CollectionsSuperExampleTest {
         List<Car> listOfCars = new ArrayList<>();
 
         // считай тут можно пихать все что extends Car
-        listOfCars.add(new DieselCar(null));
+        listOfCars.add(new GasCar(null));
 
         assertEquals(1, listOfCars.size());
 
