@@ -1,7 +1,7 @@
 package lessons.car;
 
 
-public abstract class Car<T> {
+public abstract class Car {
     protected Tank tank;
 
     public Car(Tank tank) {

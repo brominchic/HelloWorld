@@ -10,7 +10,7 @@ public class CarService extends ArrayList<ServiceBox> {
         super(initialCapacity);
 
         for (int i = 0; i < initialCapacity; i++) {
-            add(i, new ServiceBox<Car>(stealProbability));
+            add(i, new ServiceBox<>(stealProbability));
         }
     }
 
