@@ -7,16 +7,12 @@ public class GasCar extends Car {
     }
 
     @Override
-    public void ride() {
-    }
-
-    @Override
     public void recharge(int value, Fuel fuel) {
         if (fuel == Fuel.Gas) {
             tank.addFuel(value);
         } else {
             throw new RuntimeException("Неправильный тип топлива");
         }
-
     }
+
 }

@@ -1,7 +1,6 @@
 package lessons.collections;
 
 import lessons.car.Car;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
