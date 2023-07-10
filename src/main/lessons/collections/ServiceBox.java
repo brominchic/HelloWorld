@@ -2,18 +2,16 @@ package lessons.collections;
 
 import lessons.car.Car;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ServiceBox<E extends Car> {
     private int stealProbability;
     private E car;
-    private final Random random;
     private int stolenFuel;
 
     public ServiceBox(int stealProbability) {
         this.stealProbability = stealProbability;
         this.car = null;
-        this.random = new Random();
     }
 
     public void parkToService(E car) {
@@ -39,7 +37,7 @@ public class ServiceBox<E extends Car> {
     }
 
     private void steal(int amount) {
-        if (random.nextInt(0, 100) < stealProbability) {
+        if (ThreadLocalRandom.current().nextInt(0, 100) < stealProbability) {
             car.reduceFuel(amount);
             stolenFuel += amount;
         }

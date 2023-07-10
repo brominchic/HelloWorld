@@ -1,29 +1,30 @@
 package lessons.collections;
 
-import lessons.car.Car;
+import lessons.car.DieselCar;
 
 import java.util.ArrayList;
+import java.util.List;
 
+public class CarService {
 
-public class CarService extends ArrayList<ServiceBox> {
-    public CarService(int initialCapacity, int stealProbability) {
-        super(initialCapacity);
+    private final List<ServiceBox<DieselCar>> boxes;
 
-        for (int i = 0; i < initialCapacity; i++) {
-            add(i, new ServiceBox<>(stealProbability));
-        }
+    public CarService() {
+        this.boxes = new ArrayList<>();
     }
 
-    public boolean doService(Car car) {
-        for (int i = 0; i < size(); i++) {
-            ServiceBox service = get(i);
-            if (service.isEmpty()) {
-                int stolenFuel = service.getStolenFuel();
-                service.doService();
-                if (service.getStolenFuel() > stolenFuel) {
-                    return true;
-                }
-                return false;
+    public void addServiceBox(ServiceBox<DieselCar> box) {
+        this.boxes.add(box);
+    }
+
+    public boolean doService(DieselCar car) {
+        for (ServiceBox<DieselCar> box : boxes) {
+            //тимур, тут сервис раньше даже с машиной не работал!!
+            if (box.isEmpty()) {
+                box.parkToService(car);
+                int stolenFuel = box.getStolenFuel();
+                box.doService();
+                return box.getStolenFuel() > stolenFuel;
             }
         }
         throw new RuntimeException("Нет свободных мест");
