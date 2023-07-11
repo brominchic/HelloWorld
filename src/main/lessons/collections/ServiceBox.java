@@ -14,6 +14,9 @@ public class ServiceBox<E extends Car> {
         this.car = null;
     }
 
+    public ServiceBox() {
+    }
+
     public void parkToService(E car) {
         if (this.car == (null)) {
             this.car = car;

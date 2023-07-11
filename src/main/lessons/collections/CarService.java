@@ -20,6 +20,7 @@ public class CarService {
     public boolean doService(DieselCar car) {
         for (ServiceBox<DieselCar> box : boxes) {
             //тимур, тут сервис раньше даже с машиной не работал!!
+            // у меня работал вроде :(
             if (box.isEmpty()) {
                 box.parkToService(car);
                 int stolenFuel = box.getStolenFuel();
