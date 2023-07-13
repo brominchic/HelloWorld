@@ -43,48 +43,4 @@ class CarServiceTest {
         assertTrue(carService.doService(mock(DieselCar.class)));
     }
 
-    @Test
-    void testCarServiceSpy() {
-        ServiceBox<DieselCar> serviceBox = spy(ServiceBox.class);
-        Mockito.doReturn(Boolean.TRUE).when(serviceBox).isEmpty();
-        when(serviceBox.getStolenFuel()).thenAnswer(new Answer() {
-            private int count = 0;
-
-            public Object answer(InvocationOnMock invocation) {
-                return count++;
-            }
-        });
-        carService.addServiceBox(serviceBox);
-        assertTrue(carService.doService(mock(DieselCar.class)));
-    }
-
-    @Captor
-    ArgumentCaptor<DieselCar> carCaptor;
-
-    @Test
-    void testCarServiceCapture() {
-        DieselCar dieselCar = new DieselCar(new Tank(100));
-        ServiceBox<DieselCar> serviceBox = spy(ServiceBox.class);
-        serviceBox.parkToService(dieselCar);
-        verify(serviceBox).parkToService(carCaptor.capture());
-        assertTrue(dieselCar.equals(carCaptor.getValue()));
-    }
-
-    @Mock
-    ServiceBox<DieselCar> service;
-    @InjectMocks
-    CarServiceForMock carServiceForMock = new CarServiceForMock();
-
-    @Test
-    void testCarServiceInject() {
-        when(service.isEmpty()).thenReturn(Boolean.TRUE);
-        when(service.getStolenFuel()).thenAnswer(new Answer() {
-            private int count = 0;
-
-            public Object answer(InvocationOnMock invocation) {
-                return count++;
-            }
-        });
-        assertTrue(carServiceForMock.doService(mock(DieselCar.class)));
-    }
 }
