@@ -1,6 +1,5 @@
 package lessons.car;
-import lessons.car.DieselCar;
-import lessons.car.Tank;
+
 import lessons.collections.KPP;
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +19,11 @@ public class AddCarTest {
         testKPP.addCar(secondCar);
         testKPP.addCar(thirdCar);
         var firstTest = testKPP.addCar(fourthCar);
-        assertEquals(firstCar,firstTest);
+        assertEquals(firstCar, firstTest);
 
         testKPP.addCar(fifthCar);
         var secondTest = testKPP.addCar(sixthCar);
-        assertEquals(thirdCar,secondTest,"неверно");
+        assertEquals(thirdCar, secondTest, "неверно");
 
-}
+    }
 }
